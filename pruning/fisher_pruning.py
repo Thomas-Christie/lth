@@ -14,7 +14,7 @@ from pruning.mask import Mask
 
 
 @dataclasses.dataclass
-class FisherPruningHparams(hparams.PruningHparams):
+class PruningHparams(hparams.PruningHparams):
     pruning_strategy = 'fisher_pruning'
     pruning_fraction: float = 0.2
     pruning_layers_to_ignore: str = None
@@ -29,13 +29,13 @@ class FisherPruningHparams(hparams.PruningHparams):
     _num_data_points = 'Number of data points to use to calculate Fisher information'
 
 
-class FisherStrategy(base.Strategy):
+class Strategy(base.Strategy):
     @staticmethod
     def get_pruning_hparams() -> type:
-        return FisherPruningHparams
+        return PruningHparams
 
     @staticmethod
-    def prune(pruning_hparams: FisherPruningHparams, trained_model: models.base.Model, current_mask: Mask = None):
+    def prune(pruning_hparams: PruningHparams, trained_model: models.base.Model, current_mask: Mask = None):
         dataset_hparams = hparams.DatasetHparams(pruning_hparams.dataset_name, 1)
         dataloader = datasets.registry.get(dataset_hparams)
 
