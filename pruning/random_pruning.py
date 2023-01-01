@@ -2,7 +2,7 @@
 
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-
+import copy
 import dataclasses
 import numpy as np
 
@@ -48,8 +48,20 @@ class Strategy(base.Strategy):
                    if k in prunable_tensors}
 
         # Create a vector of all the unpruned weights in the model.
-        new_mask = Mask({k: np.random.choice([0, 1], size=v.shape, p=[pruning_hparams.pruning_fraction, 1 - pruning_hparams.pruning_fraction]) for k, v in weights.items()})
+        flattened_weights = np.concatenate([v.reshape(-1) for v in current_mask.values()])
+        non_zero_idx = flattened_weights.nonzero()
+        prune_idx = np.random.permutation(non_zero_idx[0]).reshape(-1)[0:number_of_weights_to_prune]
 
+        flattened_weights[prune_idx] = 0
+
+        i = 0
+        new_mask = copy.deepcopy(current_mask)
+        for k, v in new_mask.items():
+            v_size = v.size
+            new_mask[k] = flattened_weights[i: i + v_size].reshape(v.shape)
+            i += v_size
+
+        new_mask = Mask(new_mask)
         for k in current_mask:
             if k not in new_mask:
                 new_mask[k] = current_mask[k]
