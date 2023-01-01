@@ -22,7 +22,7 @@ if __name__ == "__main__":
                for k, v in trained_model.state_dict().items()
                if k in prunable_tensors}
 
-    pruner = pruning.fisher_pruning.FisherStrategy()
+    pruner = pruning.fisher_pruning.Strategy()
     pruning_mask = pruner.prune(pruner.get_pruning_hparams(), trained_model)
     print(f"Mask: {pruning_mask}")
     total_ones = 0
