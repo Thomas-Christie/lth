@@ -1,0 +1,77 @@
+==================================================================================
+Lottery Ticket Experiment (Replicate 1)
+----------------------------------------------------------------------------------
+Dataset Hyperparameters
+    * dataset_name => cifar10
+    * batch_size => 128
+Model Hyperparameters
+    * model_name => cifar_resnet_20
+    * model_init => kaiming_normal
+    * batchnorm_init => uniform
+Training Hyperparameters
+    * optimizer_name => sgd
+    * lr => 0.1
+    * training_steps => 6ep
+    * momentum => 0.9
+    * milestone_steps => 80ep,120ep
+    * gamma => 0.1
+    * weight_decay => 0.0001
+Pruning Hyperparameters
+    * pruning_strategy => sparse_global
+    * pruning_fraction => 0.2
+Pretraining Dataset Hyperparameters
+    * dataset_name => cifar10
+    * batch_size => 128
+Pretraining Training Hyperparameters
+    * optimizer_name => sgd
+    * lr => 0.1
+    * training_steps => 500it
+    * momentum => 0.9
+    * milestone_steps => 80ep,120ep
+    * gamma => 0.1
+    * weight_decay => 0.0001
+Output Location: open_lth_data/lottery_5e7543b4a69a805115e0f43ad4cc2088/replicate_1/level_0/main
+==================================================================================
+
+----------------------------------------------------------------------------------
+Pretraining
+----------------------------------------------------------------------------------
+100.0%test	ep 000	it 000	loss 2.368	acc 10.00%	ex 10000	time 0.00s
+test	ep 001	it 000	loss 1.529	acc 47.17%	ex 10000	time 565.27s
+test	ep 001	it 109	loss 1.576	acc 47.93%	ex 10000	time 175.05s
+----------------------------------------------------------------------------------
+Pruning Level 0
+----------------------------------------------------------------------------------
+test	ep 001	it 109	loss 1.576	acc 47.93%	ex 10000	time 0.00s
+test	ep 002	it 000	loss 1.464	acc 53.85%	ex 10000	time 403.96s
+test	ep 003	it 000	loss 1.203	acc 61.42%	ex 10000	time 549.13s
+test	ep 004	it 000	loss 0.883	acc 68.64%	ex 10000	time 556.85s
+test	ep 005	it 000	loss 0.874	acc 71.75%	ex 10000	time 557.78s
+test	ep 006	it 000	loss 0.651	acc 77.66%	ex 10000	time 550.74s
+----------------------------------------------------------------------------------
+Pruning Level 1
+----------------------------------------------------------------------------------
+test	ep 001	it 109	loss 1.335	acc 51.82%	ex 10000	time 0.00s
+test	ep 002	it 000	loss 1.232	acc 59.45%	ex 10000	time 409.91s
+test	ep 003	it 000	loss 0.983	acc 67.35%	ex 10000	time 552.58s
+test	ep 004	it 000	loss 0.884	acc 69.86%	ex 10000	time 549.88s
+test	ep 005	it 000	loss 0.907	acc 71.35%	ex 10000	time 552.34s
+test	ep 006	it 000	loss 0.657	acc 77.98%	ex 10000	time 567.28s
+----------------------------------------------------------------------------------
+Pruning Level 2
+----------------------------------------------------------------------------------
+test	ep 001	it 109	loss 1.398	acc 51.94%	ex 10000	time 0.00s
+test	ep 002	it 000	loss 0.949	acc 68.73%	ex 10000	time 412.00s
+test	ep 003	it 000	loss 0.909	acc 71.86%	ex 10000	time 552.19s
+test	ep 004	it 000	loss 0.767	acc 75.04%	ex 10000	time 553.31s
+test	ep 005	it 000	loss 0.610	acc 79.42%	ex 10000	time 557.30s
+test	ep 006	it 000	loss 0.654	acc 78.18%	ex 10000	time 552.58s
+----------------------------------------------------------------------------------
+Pruning Level 3
+----------------------------------------------------------------------------------
+test	ep 001	it 109	loss 2.065	acc 22.34%	ex 10000	time 0.00s
+test	ep 002	it 000	loss 1.139	acc 63.20%	ex 10000	time 408.10s
+test	ep 003	it 000	loss 0.919	acc 70.11%	ex 10000	time 555.26s
+test	ep 004	it 000	loss 0.680	acc 77.66%	ex 10000	time 555.61s
+test	ep 005	it 000	loss 0.742	acc 75.78%	ex 10000	time 555.58s
+test	ep 006	it 000	loss 0.572	acc 80.49%	ex 10000	time 548.82s
