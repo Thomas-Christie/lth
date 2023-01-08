@@ -2,3 +2,4 @@ __pycache__
 *.pyc
 .*/
 venv
+open_lth_datasets
