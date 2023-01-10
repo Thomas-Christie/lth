@@ -15,7 +15,10 @@ def binary(w):
 
 def kaiming_normal(w):
     if isinstance(w, torch.nn.Linear) or isinstance(w, torch.nn.Conv2d):
+        torch.manual_seed(42)
         torch.nn.init.kaiming_normal_(w.weight)
+        if w.bias is not None:
+            w.bias.data = torch.zeros_like(w.bias.data)
 
 
 def kaiming_uniform(w):

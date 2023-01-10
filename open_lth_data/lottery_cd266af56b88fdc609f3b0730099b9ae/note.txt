@@ -1,0 +1,1 @@
+Note that each replicate in this batch of experiments was initialised with the same weights.
